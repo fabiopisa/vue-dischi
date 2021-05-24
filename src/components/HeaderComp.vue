@@ -13,7 +13,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~bootstrap/scss/bootstrap';
+
 header{
   height: 70px;
   background-color:#2E3A46 ;

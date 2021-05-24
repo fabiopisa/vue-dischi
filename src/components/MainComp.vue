@@ -29,7 +29,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~bootstrap/scss/bootstrap';
 main{
   background-color:#1E2D3B ;
   padding: 90px 0;
