@@ -3,6 +3,7 @@
     <div v-if="!loading">
       <HeaderComp
       :genders="arrGenders"
+      @searhGender = "searchingGender"
       />
       <MainComp 
       :discs="arrDiscs"/>
@@ -27,19 +28,29 @@ export default {
       arrDiscs:[],
       loading:true,
       arrGenders:[],
+      strGender:'',
     }
   },
   created(){
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
     .then(res =>{
       console.log(res.data.response);
-      this.arrDiscs = res.data.response;
+
+      this.arrDiscs = res.data.response.filter( item =>{
+        if(item.genre === this.strGender){
+          return this.arrDiscs.push(item)
+        }else if(this.strGender === ''){
+          return res.data.response
+        }
+      });
+
       this.arrGenders = res.data.response.filter( item =>{
         if(!this.arrGenders.includes(item.genre)){
           return this.arrGenders.push(item.genre)
         }
         console.log(this.arrGenders);
       });
+
       this.loading = false;
     })
     .catch(err =>{
@@ -51,13 +62,9 @@ export default {
   },
   methods:{
     
-    /* this.arrGenders = this.arrDiscs.filter( item =>{
-      if(!this.arrGenders[item.genre].includes(item.genre)){
-        this.arrGenders.push(item);
-      };
-      console.log(this.arrGenders);
-      return this.arrGenders
-    }), */
+    searchingGender(text){
+      this.strGender = text
+    }
    
   },
   components: {

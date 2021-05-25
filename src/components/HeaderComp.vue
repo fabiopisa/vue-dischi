@@ -5,9 +5,14 @@
     </div>
     <div class="offset-8 col-1">
       <select name="album" id="generis" placeholder="Generi">
-        <option value="all">All</option>
+        <option
+        @click="resetStr()" 
+        value="all">
+          All
+        </option>
         <option
         v-for="(gender, index) in genders" :key="index"
+        @click="writheStr(gender.genre)"
         value="gender.genre">
         {{gender.genre}}
         </option>
@@ -19,8 +24,23 @@
 <script>
 export default {
  name:'HeaderComp',
+ data(){
+   return{
+     
+   }
+ },
  props:{
    genders:Array
+ },
+ methods:{
+   writheStr(str){
+     this.$emit("searhGender",str);
+     console.log(str);
+   },
+   resetStr(){
+     this.strGender ="";
+     this.writheStr();
+   }
  }
 }
 </script>
