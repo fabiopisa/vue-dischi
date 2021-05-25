@@ -35,7 +35,6 @@ export default {
   created(){
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
     .then(res =>{
-      /* console.log(res.data.response); */
       this.arrDiscs = res.data.response;
       this.arrDiscsGenders = this.arrDiscs;
       this.arrGenders = res.data.response.filter( item =>{
@@ -60,9 +59,9 @@ export default {
       this.strGender = text;
       this.arrDiscsGenders = this.arrDiscs.filter( item =>{
         if(this.strGender === item.genre){
-          return this.arrDiscsGenders.push(item)
+          return true
         }else if(this.strGender === ''){
-          return this.arrDiscs
+          return this.arrDiscsGenders = this.arrDiscs
         }
       });
       console.log(this.arrDiscsGenders);
