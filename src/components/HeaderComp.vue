@@ -34,7 +34,7 @@ export default {
  },
  methods:{
    writheStr(str){
-     this.$emit("searhGender",str);
+     this.$emit("searchGender",str);
      console.log(str);
    },
    resetStr(){

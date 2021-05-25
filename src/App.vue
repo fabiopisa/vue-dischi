@@ -3,7 +3,7 @@
     <div v-if="!loading">
       <HeaderComp
       :genders="arrGenders"
-      @searhGender = "searchingGender"
+      @searchGender = 'searchingGender'
       />
       <MainComp 
       :discs="arrDiscs"/>
@@ -37,7 +37,7 @@ export default {
       console.log(res.data.response);
 
       this.arrDiscs = res.data.response.filter( item =>{
-        if(item.genre === this.strGender){
+        if(this.strGender === item.genre){
           return this.arrDiscs.push(item)
         }else if(this.strGender === ''){
           return res.data.response
@@ -63,7 +63,7 @@ export default {
   methods:{
     
     searchingGender(text){
-      this.strGender = text
+      return this.strGender = text
     }
    
   },
