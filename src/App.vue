@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div v-if="!loading">
-      <HeaderComp/>
+      <HeaderComp
+      :genders="arrDiscs"
+      />
       <MainComp 
       :discs="arrDiscs"/>
     </div>
@@ -24,6 +26,7 @@ export default {
       axios,
       arrDiscs:[],
       loading:true,
+      arrGenders:[],
     }
   },
   created(){
@@ -31,11 +34,30 @@ export default {
     .then(res =>{
       console.log(res.data.response);
       this.arrDiscs = res.data.response;
+      this.arrGenders = res.data.response.filter( item =>{
+        if(!this.arrGenders[item.genre].includes(res.data.response[item.genre])){
+          return this.arrGenders.push(res.data.response[item]);
+        };
+      });
       this.loading = false;
     })
     .catch(err =>{
       console.log(err);
     })
+  },
+  computed:{
+    
+  },
+  methods:{
+    
+    /* this.arrGenders = this.arrDiscs.filter( item =>{
+      if(!this.arrGenders[item.genre].includes(item.genre)){
+        this.arrGenders.push(item);
+      };
+      console.log(this.arrGenders);
+      return this.arrGenders
+    }), */
+   
   },
   components: {
     HeaderComp,

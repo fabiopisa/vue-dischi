@@ -8,8 +8,10 @@
         <div class="box-background p-3">
           <img class="img-fluid" :src="disc.poster" :alt="disc.title">
           <h3>{{disc.title}}</h3>
-          <h4>{{disc.author}}</h4>
-          <h4>{{disc.year}}</h4>
+          <div>
+            <h4>{{disc.author}}</h4>
+            <h4>{{disc.year}}</h4>
+          </div>
         </div>
 
       </div>
@@ -41,7 +43,6 @@ main{
         background-color:#2E3A46 ;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
         height: 100%;
         img{
@@ -52,12 +53,15 @@ main{
           font-size: 20px;
           text-transform: uppercase;
           font-weight: bold;
-          margin:20px 0;
+          margin:20px 0 10px;
         };
         h4{
           font-size: 15px;
           color:#737771; 
-          margin-bottom: 0;      
+          margin-bottom: 0;
+          &:last-child{
+            font-size: 13px
+          };      
         };
       };
 
