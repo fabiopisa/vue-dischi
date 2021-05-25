@@ -2,7 +2,7 @@
   <div id="app">
     <div v-if="!loading">
       <HeaderComp
-      :genders="arrDiscs"
+      :genders="arrGenders"
       />
       <MainComp 
       :discs="arrDiscs"/>
@@ -35,9 +35,10 @@ export default {
       console.log(res.data.response);
       this.arrDiscs = res.data.response;
       this.arrGenders = res.data.response.filter( item =>{
-        if(!this.arrGenders[item.genre].includes(res.data.response[item.genre])){
-          return this.arrGenders.push(res.data.response[item]);
-        };
+        if(!this.arrGenders.includes(item.genre)){
+          return this.arrGenders.push(item.genre)
+        }
+        console.log(this.arrGenders);
       });
       this.loading = false;
     })
