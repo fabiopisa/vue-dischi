@@ -26,20 +26,20 @@ export default {
  name:'HeaderComp',
  data(){
    return{
-     
+     strSearchGender:'',
    }
  },
  props:{
    genders:Array
  },
  methods:{
-   writheStr(str){
-     this.$emit("searchGender",str);
-     console.log(str);
+   writheStr(object){
+     this.$emit("searchGender",this.strSearchGender = object);
+     console.log(this.strSearchGender);
    },
    resetStr(){
-     this.strGender ="";
-     this.writheStr();
+     this.strSearchGender ="";
+     this.writheStr('');
    }
  }
 }

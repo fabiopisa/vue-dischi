@@ -32,7 +32,6 @@ export default {
 
 <style lang="scss" scoped>
 main{
-  background-color:#1E2D3B ;
   padding: 90px 0;
   .box-discs{
     display: flex;
